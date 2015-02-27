@@ -1,0 +1,119 @@
+
+@font-face {
+	font-family: "ReplicaBold";
+	src: url('../assets/Replica-Bold.otf');
+	src: url('../assets/Replica-Bold.otf?#iefix') format('embedded-opentype');
+
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "ReplicaBold";
+	src: url('../assets/Replica-BoldItalic.otf') format('opentype');
+	src: url('../assets/Replica-BoldItalic.otf?#iefix') format('embedded-opentype');
+
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "Replica";
+	src: url('../assets/Replica-Regular.otf') format('opentype');
+	src: url('../assets/Replica-Regular.otf?#iefix') format('opentype');
+
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Replica";
+	src: url('../assets/Replica-Italic.otf') format('opentype');
+	src: url('../assets/Replica-Italic.otf?#iefix') format('embedded-opentype');
+
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "ReplicaLight";
+	src: url('../assets/Replica-Light.otf') format('opentype');
+	src: url('../assets/Replica-Light.otf?#iefix') format('embedded-opentype');
+
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "ReplicaLight";
+	src: url('../assets/Replica-LightItalic.otf') format('opentype');
+	src: url('../assets/Replica-LightItalic.otf?#iefix') format('embedded-opentype');
+
+	font-weight: normal;
+	font-style: italic;
+}
+
+h1 {
+	font-family: "Replica";
+	font-weight: normal;
+	font-size: 48pt;
+	letter-spacing: 1pt;
+
+	margin-bottom: .25em;
+}
+
+h2 {
+
+}
+
+h3 {
+	font-family: "Replica";
+	font-weight: normal;
+	font-size: 28pt;
+	letter-spacing: 1pt;
+
+}
+
+h4 {
+	font-family: "Replica";
+	font-weight: normal;
+	font-size: 20pt;
+	letter-spacing: 1pt;
+}
+
+h5 {
+	font-family: "Replica";
+	font-weight: normal;
+	font-size: 16pt;
+	letter-spacing: 1pt;
+}
+
+h6 {
+	font-family: "Replica";
+	font-weight: normal;
+	font-size: 10pt;
+	letter-spacing: 1pt;
+}
+
+p {
+	font-family: "Replica";
+	font-weight: normal;
+	font-size:12pt;
+}
+
+
+
+
+
+
+.italic {
+	font-style: italic;
+}
+
+.tagline {
+	font-weight: 300;
+}
+
+.centered {
+	text-align: center;
+}

@@ -1,0 +1,65 @@
+.bg-brand {
+	background-color: $brand-color;
+}
+
+.brand {
+	color: $brand-color;
+}
+
+.bg-white {
+	background-color: $white;
+}
+
+.white {
+	color: $white;
+}
+
+.bg-gray {
+	background-color: $gray;
+}
+
+.gray {
+	color: $gray;
+}
+
+.bg-pink {
+	background-color: pink;
+}
+
+.bg-red {
+	background-color: red;
+}
+
+.border-lr-pink {
+	border-left: 1px solid pink;
+	border-right: 1px solid pink;
+}
+
+.border-lr-red {
+	border-left: 1px solid red;
+	border-right: 1px solid red;
+}
+
+.border-tb-pink {
+	border-top: 1px solid pink;
+	border-bottom: 1px solid pink;
+}
+
+.border-tb-red {
+	border-top: 1px solid red;
+	border-bottom: 1px solid red;
+}
+
+.border-pink {
+	border: 1px solid pink;
+}
+
+.border-pink {
+	@extend .border-tb-pink;
+	@extend .border-lr-pink;
+}
+
+.border-red {
+	@extend .border-tb-red;
+	@extend .border-lr-red;
+}
