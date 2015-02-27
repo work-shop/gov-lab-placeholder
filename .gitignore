@@ -1,3 +1,12 @@
 
+# Sass Specific
+
+.sass-cache
+
+# Node Specific 
+
 node_modules
+
+# Project Specific
+
 target

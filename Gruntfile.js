@@ -44,14 +44,9 @@ module.exports = function( grunt ) {
 			},
 			html: {
 				files: '<%= paths.src.watch %>',
-				tasks: ['mv', 'watch:livereload'],
+				tasks: ['mv'],
 				options: { livereload: true }
-			},
-			livereload: {
-				options: { livereload: true },
-				files: '<%= paths.dest.watch %>'
 			}
-
 		},
 		sass: {
 			dist: {
@@ -70,8 +65,8 @@ module.exports = function( grunt ) {
 			options: {
 				compress: true,
 				mangle: true,
-				sourceMap: true,
-				sourceMapIncludesSources: true,
+				sourceMap: false,
+				sourceMapIncludesSources: false,
 				sourceMapIn: '<%= paths.dest.js %>.map'
 			},
 			target:{
