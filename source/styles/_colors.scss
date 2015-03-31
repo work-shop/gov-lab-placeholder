@@ -1,57 +1,105 @@
 .bg-brand {
 	background-color: $brand-color;
+	fill: $brand-color;
+	//@include linear-gradient(top left, lighten($brand-color, 1), $brand-color, darken($brand-color, 5), darken($brand-color, 7), darken($brand-color, 14 ));
 }
 
 .brand {
 	color: $brand-color;
+	//@include linear-gradient(top left, lighten($brand-color, 1), $brand-color, darken($brand-color, 5), darken($brand-color, 7), darken($brand-color, 14 ));
+}
+
+.callout {
+	color: $callout-color;
 }
 
 .bg-white {
 	background-color: $white;
+	fill: $white;
 }
 
 .white {
 	color: $white;
+
 }
 
 .bg-gray {
 	background-color: $gray;
+	fill: $gray;
 }
 
 .gray {
 	color: $gray;
 }
 
+.dark-gray {
+	color: $dark-gray;
+}
+
+.bg-dark-gray {
+	background-color: $dark-gray;
+}
+
 .bg-pink {
-	background-color: pink;
+	background-color: $pink;
+	fill: $pink;
 }
 
 .bg-red {
-	background-color: red;
+	background-color: $red;
+	fill: $red;
+}
+
+.border-b-gray {
+	border-bottom: 1px solid $gray;
+}
+
+.border-t-gray {
+	border-top: 1px solid $gray;
+}
+
+.border-l-dark-gray {
+	border-left: 1px solid $dark-gray;
+}
+
+.border-b-dark-gray {
+	border-bottom: 7px solid $dark-gray;
+}
+
+.border-t-dark-gray {
+	border-top: 7px solid $dark-gray;
+}
+
+.bg-transparent {
+	background-color: transparent;
+}
+
+.border-b-brand {
+	border-bottom: 3px solid $brand-color;
+}
+
+.border-t-brand {
+	border-top: 10px solid $brand-color;
 }
 
 .border-lr-pink {
-	border-left: 1px solid pink;
-	border-right: 1px solid pink;
+	border-left: 1px solid $pink;
+	border-right: 1px solid $pink;
 }
 
 .border-lr-red {
-	border-left: 1px solid red;
-	border-right: 1px solid red;
+	border-left: 1px solid $red;
+	border-right: 1px solid $red;
 }
 
 .border-tb-pink {
-	border-top: 1px solid pink;
-	border-bottom: 1px solid pink;
+	border-top: 1px solid $pink;
+	border-bottom: 1px solid $pink;
 }
 
 .border-tb-red {
-	border-top: 1px solid red;
-	border-bottom: 1px solid red;
-}
-
-.border-pink {
-	border: 1px solid pink;
+	border-top: 1px solid $red;
+	border-bottom: 1px solid $red;
 }
 
 .border-pink {
@@ -62,4 +110,12 @@
 .border-red {
 	@extend .border-tb-red;
 	@extend .border-lr-red;
+}
+
+.block-gradient {
+	@include linear-gradient(top left, transparent, #aaa );
+}
+
+.shadow {
+	@include box-shadow(0px, 0px, 1px, $dark-gray);
 }

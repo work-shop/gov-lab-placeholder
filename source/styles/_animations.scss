@@ -1,0 +1,62 @@
+@mixin keyframes ( $name ) {
+	@-webkit-keyframes #{$name} {
+		@content;
+	}
+
+	@keyframes #{$name} {
+		@content;
+	}
+}
+
+@mixin animation( $cue ) {
+	-webkit-animation: $cue;
+	animation: $cue;
+}
+
+@mixin transform( $transformations... ) {
+	-webkit-transform: $transformations;
+	-ms-transform: $transformations;
+	transform: $transformations;
+}
+
+@mixin filter( $filters... ) {
+	-webkit-filter: $filters;
+	-moz-filter: $filters;
+	filter: $filters;
+}
+
+@mixin border-radius( $top-left, $top-right, $bottom-left, $bottom-right ) {
+	-webkit-border-top-left-radius: $top-left;
+	-moz-border-top-left-radius: $top-left;
+	border-top-left-radius: $top-left;
+	
+	
+	-webkit-border-top-right-radius: $top-right;
+	-moz-border-top-right-radius: $top-right;
+	border-top-right-radius: $top-right;
+
+	-webkit-border-bottom-left-radius: $bottom-left;
+	-moz-border-bottom-left-radius: $bottom-left;
+	border-bottom-left-radius: $bottom-left;
+
+	-webkit-border-bottom-right-radius: $bottom-right;
+	-moz-border-bottom-right-radius: $bottom-right;
+	border-bottom-right-radius: $bottom-right;
+}
+
+@mixin linear-gradient( $direction, $stops... ) {
+	background: -webkit-linear-gradient($direction, $stops);
+	background: -moz-linear-gradient($direction, $stops);
+	background: -o-linear-gradient($direction, $stops);
+	background: linear-gradient($direction, $stops);
+}
+
+@mixin text-shadow($h-shadow, $v-shadow, $color) {
+	text-shadow: $h-shadow $v-shadow $color;
+}
+
+@mixin box-shadow( $h, $v, $blur, $color ) {
+	-webkit-box-shadow: $h $v $blur $color;
+	-moz-box-shadow: $h $v $blur $color;
+	box-shadow: $h $v $blur $color;
+}

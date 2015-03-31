@@ -1,0 +1,294 @@
+body {
+	//overflow: hidden;
+	overflow-x:hidden;
+}
+
+#landing-block, .brand-block {
+	.mit, .gov, .slash, .lab {
+		font-size: 70pt;
+
+		@media (max-width: $screen-sm ) {
+			font-size:36pt;
+		}
+	}
+
+	.mit {
+		font-family: "SimplonNormLight";
+		color:$dark-gray;
+		text-transform: uppercase;
+	}
+
+	.gov, .slash, .lab {
+		font-family: "SimplonNormRegular";
+		//color: darken( $gray, 30);
+		color:$brand-color;
+		text-transform: uppercase;
+	}
+
+	.mit-gray {
+		@extend .mit;
+		font-size: 40pt;
+
+		@media (max-width: $screen-md ) {
+			font-size:14pt;
+		}
+
+		color: darken($gray,15);
+	}
+
+	.gov-gray, .slash-gray, .lab-gray {
+		@extend .gov;
+		font-size: 40pt;
+
+		@media (max-width: $screen-sm ) {
+			font-size:22pt;
+		}
+
+		color: darken($gray,15);
+	}
+}
+
+
+
+
+.image-block {
+	//border-bottom:1px solid $gray;
+
+	* {
+		z-index: 100;
+	}
+
+	.gradient {
+		//@include linear-gradient(top left, lighten($brand-color, 1), $brand-color, darken($brand-color, 5), darken($brand-color, 7), darken($brand-color, 14 ));
+	}
+
+	.background-image {
+		position:absolute;
+		z-index: -500;
+		opacity: .1;
+
+		width: 150%;
+
+		@include transform( translateY( -10% ) );
+		@include filter( grayscale(.5) );
+
+
+		@media (max-width: $screen-md) {
+			width: 250%;
+		}
+
+		@media (max-width: $screen-sm) {
+			width: 300%;
+		}
+	}
+
+	.background-overlay-1 {
+		position:absolute;
+		top:42%;
+		left:50%;
+		width: 55%;
+		z-index: -250;
+		opacity: .1;
+
+		@include transform( translateY( -50% ) translateX( -60% ) rotate(-1deg) );
+		//@include filter( grayscale(.95) );
+	}
+
+	.background-overlay-2 {
+		position:absolute;
+		top:42%;
+		left:5%;
+		width: 55%;
+		z-index: -250;
+		opacity: .1;
+
+		@include transform( translateY( -50% ) translateX( -60% ) rotate(-5deg) );
+		//@include filter( grayscale(.95) );
+	}
+
+	.background-overlay-3 {
+		position:absolute;
+		top:42%;
+		left:98%;
+		width: 50%;
+		z-index: -250;
+		opacity: .1;
+
+		@include transform( translateY( -50% ) translateX( -60% ) rotate(-5deg) );
+		//@include filter( grayscale(.95) );
+	}
+}
+
+#about-block {
+
+	.ninety {
+		//@include linear-gradient(top, $brand-color, darken($brand-color, 5), darken($brand-color, 7), darken($brand-color, 14 ));
+	}
+}
+
+#projects-block {
+	overflow-x:hidden;
+	overflow-y:scroll;
+}
+
+.animation-active {
+	#arrow-icon {
+		@media( min-width: $screen-sm ) {
+			@include animation( rot 1s forwards );
+		}
+		@media (max-width: $screen-sm ) {
+			@include animation( rot-sm 1s forwards );
+		}
+		
+	}
+}
+
+@include keyframes ( rot ) {
+
+	90% {
+		color: darken($white,3);
+		font-size: 95pt;
+		-webkit-transform-origin:  center -200px;
+		@include transform( 
+			rotateX( 180deg ) 
+		);
+	}
+
+	100% {
+		color: $white;
+		font-size: 100pt;
+		-webkit-transform-origin:  center -200px;
+		@include transform( 
+			rotateX( 180deg ) 
+		);
+	}
+
+}
+
+
+@include keyframes ( rot-sm ) {
+
+	90% {
+		color: darken($white,3);
+		font-size: 95pt;
+		-webkit-transform-origin:  center center;
+		@include transform( 
+			rotateX( 180deg ) 
+		);
+	}
+
+	100% {
+		color: $white;
+		font-size: 100pt;
+		-webkit-transform-origin:  center center;
+		@include transform( 
+			rotateX( 180deg ) 
+		);
+	}
+
+}
+
+
+
+
+
+// Subscribe Button and Form
+
+#subscribe-button {
+	//width: 15%;
+	z-index: 1000;
+	@include border-radius( 5%, 5%, 5%, 5% );
+}
+
+#overlay {
+	position: fixed;
+	top:0%;
+	left:-1000px;
+
+	z-index:950;
+
+	display:none;
+
+	opacity:.4;
+
+	@include linear-gradient(top left, $dark-gray, darken($dark-gray,5));
+}
+
+#contact {
+	background-color: darken($gray, 5);
+
+	position: fixed;
+	top: 5%;
+	left: -1000%;
+
+	z-index: 1000;
+
+	width:40%;
+
+	@media (max-width: $screen-sm) {
+		width:95%;
+	}
+
+	//opacity: .85;
+
+	//@include border-radius( 5%, 5%, 5%, 5% );
+
+	// .required-star {
+	// 	color: $callout-color;
+	// }
+
+	#close-subscribe-button:hover {
+		color:$brand-color;
+		//@include transform( scale( 1.5, 1.5 ) );
+	}
+
+	input {
+		width:100%;
+
+		@extend .light;
+
+		//color:$gray;
+		font-size: 18pt;
+		text-align: center;
+		border:0;
+
+		@media (max-width: $screen-sm ) {
+			font-size: 12pt;
+		}
+	}
+
+	input[type="submit"] {
+		padding:0;
+	}
+
+	input:focus {
+		color:$dark-gray;
+		outline:none;
+	}
+
+	[placeholder]:focus::-webkit-input-placeholder {
+	  	transition: opacity 0.5s 0.5s ease; 
+	 	opacity: 0;
+	}
+
+}
+
+#subscribe-callout {
+	position: fixed;
+	left:90%;
+	top:2.5%;
+	z-index: 1050;
+
+	cursor:pointer;
+}
+
+
+
+
+
+
+
+
+
+
+

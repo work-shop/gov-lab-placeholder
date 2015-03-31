@@ -1,7 +1,17 @@
 @import '../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables';
 
-$brand-color: lighten(crimson, 10);
-//$brand-color: darken(lightblue, 25);
+
+// Colors
+$callout-color: darken( crimson, 5 );
+$brand-color: #2baeb5;
+//$brand-color: #002fa7;
 $white: #fff;
-$gray: #bbb;
+$gray: #eee;
+$pink: pink;
+$red: red;
+
+$dark-gray: darken( $gray, 65 );
+
+// Type
+$alinea-space: 2em;
 
