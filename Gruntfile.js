@@ -4,8 +4,11 @@ module.exports = function( grunt ) {
 		setup: true,
 		paths: {
 			src: {
-				watch: ['source/index.html'],
-				watchmap : {'source/index.html': 'target/index.html'},
+				watch: ['source/index.html', 'source/typography.html'],
+				watchmap : {
+					'source/index.html': 'target/index.html',
+					'source/typography.html': 'target/typography.html'
+				},
 				js: 'source/**/*.js',
 				watchSCSS: 'source/**/*.scss',
 				scss: 'source/styles/style.scss'
