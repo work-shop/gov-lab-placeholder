@@ -65,12 +65,12 @@ body {
 	.background-image {
 		position:absolute;
 		z-index: -500;
-		opacity: .1;
+		opacity: .15;
 
 		width: 150%;
 
 		@include transform( translateY( -10% ) );
-		@include filter( grayscale(.5) );
+		@include filter( grayscale(1) );
 
 
 		@media (max-width: $screen-md) {
@@ -88,7 +88,7 @@ body {
 		left:50%;
 		width: 55%;
 		z-index: -250;
-		opacity: .1;
+		opacity: .15;
 
 		@include transform( translateY( -50% ) translateX( -60% ) rotate(-1deg) );
 		//@include filter( grayscale(.95) );

@@ -702,14 +702,14 @@ body {
 .image-block .background-image {
   position: absolute;
   z-index: -500;
-  opacity: .1;
+  opacity: .15;
   width: 150%;
   -webkit-transform: translateY(-10%);
   -ms-transform: translateY(-10%);
   transform: translateY(-10%);
-  -webkit-filter: grayscale(0.5);
-  -moz-filter: grayscale(0.5);
-  filter: grayscale(0.5);
+  -webkit-filter: grayscale(1);
+  -moz-filter: grayscale(1);
+  filter: grayscale(1);
 }
 @media (max-width: 992px) {
   .image-block .background-image {
@@ -727,7 +727,7 @@ body {
   left: 50%;
   width: 55%;
   z-index: -250;
-  opacity: .1;
+  opacity: .15;
   -webkit-transform: translateY(-50%) translateX(-60%) rotate(-1deg);
   -ms-transform: translateY(-50%) translateX(-60%) rotate(-1deg);
   transform: translateY(-50%) translateX(-60%) rotate(-1deg);
