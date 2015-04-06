@@ -10,8 +10,12 @@
 			}
 		});
 
-		$('#subscribe-button, #close-subscribe-button, #overlay').on('click', function() {
+		$('#subscribe-button, #subscribe-callout, #close-subscribe-button, #overlay').on('click', function() {
 			transition_form_overlay();
+		});
+
+		$(document).keyup(function(e) {
+		  if (e.keyCode == 27) $('#close-subscribe-button').click();   // close with esc key
 		});
 
 	});

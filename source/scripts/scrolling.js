@@ -56,10 +56,6 @@
 			do_block_action( $('.block:in-viewport'), action_map );
 		});
 
-		$('#subscribe-callout').on('click', function( evt ) {
-			$("html, body").animate({ scrollTop: $(document).height() }, 1000);
-		});
-
 		update_anchor_target( $('.block:below-the-fold' ), $('#down-arrow') );
 	});
 })( jQuery );

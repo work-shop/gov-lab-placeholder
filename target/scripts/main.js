@@ -265,10 +265,6 @@ For e.g. 'http://blahblah.us1.list-manage.com/subscribe/post-json?u=5afsdhfuhdsi
 			do_block_action( $('.block:in-viewport'), action_map );
 		});
 
-		$('#subscribe-callout').on('click', function( evt ) {
-			$("html, body").animate({ scrollTop: $(document).height() }, 1000);
-		});
-
 		update_anchor_target( $('.block:below-the-fold' ), $('#down-arrow') );
 	});
 })( jQuery );
@@ -422,8 +418,12 @@ function equal_width( target, selector ) {
 			}
 		});
 
-		$('#subscribe-button, #close-subscribe-button, #overlay').on('click', function() {
+		$('#subscribe-button, #subscribe-callout, #close-subscribe-button, #overlay').on('click', function() {
 			transition_form_overlay();
+		});
+
+		$(document).keyup(function(e) {
+		  if (e.keyCode == 27) $('#close-subscribe-button').click();   // close with esc key
 		});
 
 	});
