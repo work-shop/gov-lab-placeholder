@@ -1,5 +1,7 @@
 (function($) {
 	$(document).ready(function () {
+		var block = $('.block');
+
 		/* 
 			There are two scroll-triggered functions we need, especially.
 
@@ -41,24 +43,46 @@
 				{forward: act_trigger }
 			]
 
-		}
+		};
 
 
 		/** [1]. arrow target swap machine */
 		/** [2]. animation trigger */
 		$(window).on('scroll', function() {
-			update_anchor_target( $('.block:below-the-fold' ), $('#arrow-icon') );
-			do_block_action( $('.block:in-viewport'), action_map );
+
+			update_anchor_target( select_next_block( block ), $('#arrow-icon') );
+
+			//do_block_action( $('.block:in-viewport'), action_map );
+
 		});
 
-		$(window).on('resize', function() {
-			update_anchor_target( $('.block:below-the-fold' ), $('#arrow-icon') );
-			do_block_action( $('.block:in-viewport'), action_map );
-		});
+		$(document).on('dom-is-sized', function() {
 
-		update_anchor_target( $('.block:below-the-fold' ), $('#down-arrow') );
+			update_anchor_target( select_next_block( block ), $('#down-arrow') );
+
+		});
 	});
 })( jQuery );
+
+/**
+ * This routine reduces the set of potential arrow-targets to
+ * the next block;
+ *
+ */
+function select_next_block( block ) {
+	var currentview = block.filter(':in-viewport')
+	  , nextview =  block.filter(':below-the-fold');
+
+	if ( currentview.length == 1 ) { return nextview.first(); }
+
+	else if ( currentview.length > 1 ) { return currentview.last(); }
+
+	else {
+		
+		console.log('no blocks!');
+		return false;
+	}
+}
 
 function brand_trigger( current ){
 	$('#arrow-icon').removeClass('gray').removeClass('dark-gray').addClass('brand');
@@ -88,31 +112,28 @@ function fade_in( current ) {
 }
 
 function fade_out( current ) {
-	console.log( $('#' + current.last().attr('id') + '-cue' ) );
+	//console.log( $('#' + current.last().attr('id') + '-cue' ) );
 	$('#' + current.last().attr('id') + '-cue' ).fadeOut();
 }
 
 /** [1]. arrow target swap machine - callback */
 
 function update_anchor_target( next, selector ) {
+	
 	selector.off();
-	selector.on('click', target_handler( next ) );
+	selector.one('click', target_handler( next ) );
 }
 
-function target_handler( target, selector ) {
+function target_handler( target ) {
 	return function() {
+		console.log( "target parameter to 'target_handler':");
+		console.log( target );
+
 		if ( target.length > 0 ) {
-			//selector.css({'z-index': 1000});
 			$('html, body').animate({
 				scrollTop: target.offset().top
 			}, 1500);
-		} else {
-			selector.off('click');
-			selector.css({'z-index': 500});
-			// $('html, body').animate({
-			// 	scrollTop: 0
-			// }, 1500);
-		}	
+		} 
 	};
 }
 
@@ -120,7 +141,8 @@ function target_handler( target, selector ) {
 /** [2]. animation trigger - callback */
 
 function do_block_action( block, actions ) {
-	console.log( block );
+	//console.log('do_block_action');
+	//console.log( block );
 	var id = '#' + block.last().attr('id');
 	if ( id && actions[ id ] ) {
 		if ( actions[id].length ) {

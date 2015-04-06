@@ -29,6 +29,8 @@ function equal_width( target, selector ) {
 				); 
 			}	
 		}
+
+		$(document).trigger('dom-is-sized');
 	}
 
 	var actionmap = 
