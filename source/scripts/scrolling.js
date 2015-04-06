@@ -12,35 +12,40 @@
 		*/
 		var action_map = {
 			'#landing-block': [
-				{forward: gray_trigger},
-				{ backward: fade_in }
+				gray_trigger,
+				fade_in
 			],
 			'#about-block': [
-				{forward: brand_trigger},
-				{forward: fade_out, backward: fade_in }
+				brand_trigger,
+				fade_out,
+				fade_in
 			],
 			'#process-block-1': [
-				{forward: dark_gray_trigger},
-				{forward: fade_out, backward: fade_in }
+				dark_gray_trigger,
+				fade_out,
+				fade_in
 			],
 			'#process-block-2': [
-				{forward: gray_trigger}
+				gray_trigger
 			],
 			'#process-block-3': [
-				{forward: dark_gray_trigger},
-				{forward: fade_out, backward: fade_in }
+				dark_gray_trigger,
+				fade_out,
+				fade_in
 			],
 			'#projects-block': [
-				{forward: dark_gray_trigger}, 
-				{forward: fade_out, backward: fade_in }
+				dark_gray_trigger,
+				fade_out,
+				fade_in
 			],
 			'#contact-block': [
-				{forward: dark_gray_trigger},
-				{forward: act_trigger_inverse},
-				{forward: fade_out, backward: fade_in }
+				dark_gray_trigger,
+				act_trigger_inverse,
+				fade_out,
+				fade_in
 			],
 			'#bot': [
-				{forward: act_trigger }
+				act_trigger
 			]
 
 		};
@@ -52,7 +57,7 @@
 
 			update_anchor_target( select_next_block( block ), $('#arrow-icon') );
 
-			//do_block_action( $('.block:in-viewport'), action_map );
+			do_block_action( $('.block, #bot').filter(':in-viewport'), action_map );
 
 		});
 
@@ -84,6 +89,8 @@ function select_next_block( block ) {
 	}
 }
 
+/** Arrow Color Change Functions */
+
 function brand_trigger( current ){
 	$('#arrow-icon').removeClass('gray').removeClass('dark-gray').addClass('brand');
 }
@@ -96,15 +103,25 @@ function dark_gray_trigger( current ){
 	$('#arrow-icon').removeClass('brand').removeClass('gray').addClass('dark-gray');
 }
 
+/** Arrow Animation Trigger */
+
 function act_trigger( current ) {
-	if ( !($('#down-arrow').hasClass( 'animation-active')) )  {
-		$('#down-arrow' ).addClass('animation-active');
-	}
+	/* Not Cursor Pointer */
+
+	$('#down-arrow').fadeOut(300);
+
+	// if ( !($('#down-arrow').hasClass( 'animation-active')) )  {
+	// 	$('#down-arrow' ).addClass( 'animation-active');
+	// }
 }
 
 function act_trigger_inverse( current ) {
-	$('#down-arrow').removeClass('animation-active');
+
+	$('#down-arrow').fadeIn(400);
+	//$('#down-arrow').removeClass('animation-active');
 } 
+
+/** Section Introduction Text Cue */
 
 function fade_in( current ) {
 	$('#' + current.last().prev('section').attr('id') + '-cue' ).fadeIn();
@@ -115,6 +132,8 @@ function fade_out( current ) {
 	//console.log( $('#' + current.last().attr('id') + '-cue' ) );
 	$('#' + current.last().attr('id') + '-cue' ).fadeOut();
 }
+
+
 
 /** [1]. arrow target swap machine - callback */
 
@@ -138,22 +157,30 @@ function target_handler( target ) {
 }
 
 
+
+
 /** [2]. animation trigger - callback */
 
 function do_block_action( block, actions ) {
-	//console.log('do_block_action');
-	//console.log( block );
-	var id = '#' + block.last().attr('id');
+	block = block.last();
+
+	console.log( '\n\n current block.last() :::');
+	console.log( block );
+
+	var id = '#' + block.attr('id');
+
 	if ( id && actions[ id ] ) {
+
 		if ( actions[id].length ) {
-			actions[id].forEach(function( action ) {
-				if (action.forward) action.forward( block );
-				if (action.backward) action.backward( block );
-			});
+
+			actions[id].forEach( function( action ) { action( block ); } );
+
 		} else {
-			if (actions[id].forward) actions[id].forward( block );
-			if (actions[id].backward) actions[id].backward( block );
+
+			 actions[id]( block );
+
 		}
+
 	}
 }
 
