@@ -884,10 +884,13 @@ body {
   top: 5%;
   left: -1000%;
   z-index: 1000;
-  width: 95%;
-  max-width: 720px;
+  width: 40%;
 }
-
+@media (max-width: 768px) {
+  #contact {
+    width: 95%;
+  }
+}
 #contact #close-subscribe-button:hover {
   color: #2baeb5;
 }
