@@ -223,11 +223,8 @@ body {
 
 	z-index: 1000;
 
-	width:40%;
-
-	@media (max-width: $screen-sm) {
-		width:95%;
-	}
+	width:95%;
+	max-width: 720px;
 
 	//opacity: .85;
 
