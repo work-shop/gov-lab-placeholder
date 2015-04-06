@@ -121,7 +121,7 @@ function act_trigger_inverse( current ) {
 	//$('#down-arrow').removeClass('animation-active');
 } 
 
-/** Section Introduction Text Cue */
+/** Bottom Bars Callout Text Cue */
 
 function fade_in( current ) {
 	$('#' + current.last().prev('section').attr('id') + '-cue' ).fadeIn();
