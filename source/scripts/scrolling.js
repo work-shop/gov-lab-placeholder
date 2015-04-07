@@ -35,17 +35,19 @@
 			],
 			'#projects-block': [
 				dark_gray_trigger,
+				act_trigger_inverse,
 				fade_out,
 				fade_in
 			],
 			'#contact-block': [
 				dark_gray_trigger,
-				act_trigger_inverse,
+				act_trigger,
 				fade_out,
-				fade_in
+				fade_in,
+				
 			],
 			'#bot': [
-				act_trigger
+				
 			]
 
 		};
@@ -75,17 +77,29 @@
  *
  */
 function select_next_block( block ) {
-	var currentview = block.filter(':in-viewport')
-	  , nextview =  block.filter(':below-the-fold');
+	var delta = 5;
 
-	if ( currentview.length == 1 ) { return nextview.first(); }
+	var currentviews = block.filter(':in-viewport')
+	  , nextviews =  block.filter(':below-the-fold');
 
-	else if ( currentview.length > 1 ) { return currentview.last(); }
+	var currentview = currentviews.last(),
+	    nextview = nextviews.first();
 
-	else {
+	var epsilon = Math.abs( $(window).scrollTop() - currentview.offset().top );
+
+	if ( currentviews.length == 1 ) { 
+		
+		return nextview; 
+
+	} else if ( currentviews.length > 1 ) { 
+
+		return ( epsilon < delta ) ? nextview : currentview; 
+
+	} else {
 		
 		console.log('no blocks!');
 		return false;
+
 	}
 }
 
@@ -106,19 +120,15 @@ function dark_gray_trigger( current ){
 /** Arrow Animation Trigger */
 
 function act_trigger( current ) {
-	/* Not Cursor Pointer */
 
 	$('#down-arrow').fadeOut(300);
 
-	// if ( !($('#down-arrow').hasClass( 'animation-active')) )  {
-	// 	$('#down-arrow' ).addClass( 'animation-active');
-	// }
 }
 
 function act_trigger_inverse( current ) {
 
 	$('#down-arrow').fadeIn(400);
-	//$('#down-arrow').removeClass('animation-active');
+
 } 
 
 /** Bottom Bars Callout Text Cue */
@@ -129,7 +139,6 @@ function fade_in( current ) {
 }
 
 function fade_out( current ) {
-	//console.log( $('#' + current.last().attr('id') + '-cue' ) );
 	$('#' + current.last().attr('id') + '-cue' ).fadeOut();
 }
 
@@ -140,32 +149,30 @@ function fade_out( current ) {
 function update_anchor_target( next, selector ) {
 	
 	selector.off();
-	selector.one('click', target_handler( next ) );
-}
 
-function target_handler( target ) {
-	return function() {
-		console.log( "target parameter to 'target_handler':");
-		console.log( target );
-
-		if ( target.length > 0 ) {
+	selector.one('click', function() {
+		if ( next.length > 0 ) {
 			$('html, body').animate({
-				scrollTop: target.offset().top
+				scrollTop: next.offset().top
 			}, 1500);
 		} 
-	};
+	});
+
 }
 
 
-
-
-/** [2]. animation trigger - callback */
-
+/**
+ * This method iterates through a set of registered actions
+ * ( of the form 'selecter id' => array( current block => void )' )
+ * and executes the appropriate actions for the last valid block
+ * in the viewport
+ *
+ * @param block jQuery object representing the set of matched blocks
+ * @param actions [selecter id' => array( current block => void )]
+ *
+ */
 function do_block_action( block, actions ) {
 	block = block.last();
-
-	console.log( '\n\n current block.last() :::');
-	console.log( block );
 
 	var id = '#' + block.attr('id');
 
