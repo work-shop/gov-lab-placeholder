@@ -45,9 +45,6 @@
 				fade_out,
 				fade_in,
 				
-			],
-			'#bot': [
-				
 			]
 
 		};
@@ -56,14 +53,13 @@
 		/** [1]. arrow target swap machine */
 		/** [2]. animation trigger */
 		$(window).on('scroll', function() {
-
 			update_anchor_target( select_next_block( block ), $('#arrow-icon') );
 
 			do_block_action( $('.block, #bot').filter(':in-viewport'), action_map );
 
 		});
 
-		$(document).on('dom-is-sized', function() {
+		$(document).one('dom-is-sized', function() {
 
 			update_anchor_target( select_next_block( block ), $('#down-arrow') );
 
@@ -88,7 +84,7 @@ function select_next_block( block ) {
 	var epsilon = Math.abs( $(window).scrollTop() - currentview.offset().top );
 
 	if ( currentviews.length == 1 ) { 
-		
+
 		return nextview; 
 
 	} else if ( currentviews.length > 1 ) { 
@@ -150,12 +146,19 @@ function update_anchor_target( next, selector ) {
 	
 	selector.off();
 
-	selector.one('click', function() {
+	selector.one('click', function( e ) {
+
+		console.log( '\n\nclick callback triggered.' );
+		console.log( next );
+
+		selector.off();
 		if ( next.length > 0 ) {
 			$('html, body').animate({
 				scrollTop: next.offset().top
 			}, 1500);
 		} 
+
+		//do_block_action( select_next_block( $('.block' ) ), action_map );
 	});
 
 }

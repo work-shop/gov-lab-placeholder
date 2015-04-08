@@ -1,6 +1,18 @@
 body {
-	//overflow: hidden;
 	overflow-x:hidden;
+}
+
+#loading {
+	width: 5000px;
+	height: 5000px;
+	background-color: $gray;
+
+	opacity:1;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+
+	z-index: 1000;
 }
 
 #landing-block, .brand-block {
@@ -196,7 +208,7 @@ body {
 
 #subscribe-button {
 	//width: 15%;
-	z-index: 1000;
+	z-index: 950;
 	@include border-radius( 15px, 15px, 15px, 15px );
 }
 

@@ -22,7 +22,7 @@ function arrow_size( target, selector ) {
 	selector.css({
 		color: 'red',
 		position: 'fixed',
-		top: (($(window).height() * .9) - (selector.height() * .05)),
+		top: $(window).height() - (selector.height() * .625),
 		left: 50 + '%'
 	});
 }
@@ -65,8 +65,14 @@ function arrow_size( target, selector ) {
 	};
 
 	$( document ).ready( function() {
+		$('#loading').animate({opacity: 0}, 1000, function() { $( this ).hide(); });
 		$(window).on('resize', recalculate);
 		recalculate();
 	});
+
+	
 	
 })( jQuery );
+
+
+
