@@ -663,6 +663,17 @@ body {
   overflow-x: hidden;
 }
 
+#loading {
+  width: 5000px;
+  height: 5000px;
+  background-color: #eee;
+  opacity: 1;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+}
+
 #landing-block .mit, #landing-block .mit-gray, #landing-block .gov, #landing-block .gov-gray, #landing-block .slash-gray, #landing-block .lab-gray, #landing-block .slash, #landing-block .lab, .brand-block .mit, .brand-block #landing-block .mit-gray, #landing-block .brand-block .mit-gray, .brand-block .mit-gray, .brand-block .gov, .brand-block #landing-block .gov-gray, #landing-block .brand-block .gov-gray, .brand-block #landing-block .slash-gray, #landing-block .brand-block .slash-gray, .brand-block #landing-block .lab-gray, #landing-block .brand-block .lab-gray, .brand-block .gov-gray, .brand-block .slash-gray, .brand-block .lab-gray, .brand-block .slash, .brand-block .lab {
   font-size: 70pt;
 }
@@ -850,19 +861,19 @@ body {
   }
 }
 #subscribe-button {
-  z-index: 1000;
-  -webkit-border-top-left-radius: 5%;
-  -moz-border-top-left-radius: 5%;
-  border-top-left-radius: 5%;
-  -webkit-border-top-right-radius: 5%;
-  -moz-border-top-right-radius: 5%;
-  border-top-right-radius: 5%;
-  -webkit-border-bottom-left-radius: 5%;
-  -moz-border-bottom-left-radius: 5%;
-  border-bottom-left-radius: 5%;
-  -webkit-border-bottom-right-radius: 5%;
-  -moz-border-bottom-right-radius: 5%;
-  border-bottom-right-radius: 5%;
+  z-index: 950;
+  -webkit-border-top-left-radius: 15px;
+  -moz-border-top-left-radius: 15px;
+  border-top-left-radius: 15px;
+  -webkit-border-top-right-radius: 15px;
+  -moz-border-top-right-radius: 15px;
+  border-top-right-radius: 15px;
+  -webkit-border-bottom-left-radius: 15px;
+  -moz-border-bottom-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  -webkit-border-bottom-right-radius: 15px;
+  -moz-border-bottom-right-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 #overlay {
