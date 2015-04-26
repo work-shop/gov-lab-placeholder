@@ -19,10 +19,13 @@ function equal_width( target, selector ) {
 }
 
 function arrow_size( target, selector ) {
+	var coefficient = .05;
+	var windowHeight = $(window).height();
+	var elementHeight = selector.height();
+
 	selector.css({
-		color: 'red',
 		position: 'fixed',
-		top: $(window).height() - (selector.height() * .625),
+		bottom: -(elementHeight / 2) + (windowHeight * coefficient),
 		left: 50 + '%'
 	});
 }
@@ -61,7 +64,7 @@ function arrow_size( target, selector ) {
 		'.eighty-five': {callback: height, target: .85},
 		'.height-is-width': {callback: equal_height, target: undefined },
 		//'.width-is-height': {callback: equal_width, target: undefined }
-		'#arrow': {callback: arrow_size , target: undefined }
+		'#down-arrow': {callback: arrow_size , target: undefined }
 	};
 
 	$( document ).ready( function() {

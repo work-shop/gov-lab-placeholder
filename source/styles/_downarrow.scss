@@ -1,24 +1,28 @@
 /* Arrow Passive Styles */
 
 #down-arrow {
-	position: fixed;
-	bottom: 0%;
+	@media ( max-width: $screen-sm ) {
+		display:none;
+	}
 
-	width: 100%;
-	height: 10%;
-
+	@media ( min-width: $screen-sm ) {
+		position: fixed;
+		
+	}
 
 	z-index:500;
-
+	
 	#arrow {
 
 		#arrow-icon {
 			
 			font-size:70px;
 			cursor: pointer;
+
 		}
 	}
 }
+
 /* Arrow Keyframes */
 
 @include keyframes( leftarrow-hover ) {

@@ -130,11 +130,14 @@ function act_trigger_inverse( current ) {
 /** Bottom Bars Callout Text Cue */
 
 function fade_in( current ) {
+	//$('#' + current.last().prev('section').attr('id') + '-cue' ).removeClass('callout-off').addClass('callout-on');
+	//$('#' + current.last().next('section').attr('id') + '-cue' ).removeClass('callout-off').addClass('callout-on');
 	$('#' + current.last().prev('section').attr('id') + '-cue' ).fadeIn();
 	$('#' + current.last().next('section').attr('id') + '-cue' ).fadeIn();
 }
 
 function fade_out( current ) {
+	//$('#' + current.last().next('section').attr('id') + '-cue' ).removeClass('callout-on').addClass('callout-off');
 	$('#' + current.last().attr('id') + '-cue' ).fadeOut();
 }
 
