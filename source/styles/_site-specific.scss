@@ -70,28 +70,16 @@ body {
 		z-index: 100;
 	}
 
-	.gradient {
-		//@include linear-gradient(top left, lighten($brand-color, 1), $brand-color, darken($brand-color, 5), darken($brand-color, 7), darken($brand-color, 14 ));
-	}
-
 	.background-image {
 		position:absolute;
 		z-index: -500;
 		opacity: .15;
 
-		width: 150%;
+		width: 300%;
 
 		@include transform( translateY( -10% ) );
 		@include filter( grayscale(1) );
 
-
-		@media (max-width: $screen-md) {
-			width: 250%;
-		}
-
-		@media (max-width: $screen-sm) {
-			width: 300%;
-		}
 	}
 
 	.background-overlay-1 {
@@ -128,13 +116,6 @@ body {
 
 		@include transform( translateY( -50% ) translateX( -60% ) rotate(-5deg) );
 		//@include filter( grayscale(.95) );
-	}
-}
-
-#about-block {
-
-	.ninety {
-		//@include linear-gradient(top, $brand-color, darken($brand-color, 5), darken($brand-color, 7), darken($brand-color, 14 ));
 	}
 }
 

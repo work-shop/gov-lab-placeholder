@@ -1,17 +1,9 @@
 /* Arrow Passive Styles */
 
 #down-arrow {
-	@media ( max-width: $screen-sm ) {
-		display:none;
-	}
-
-	@media ( min-width: $screen-sm ) {
-		position: fixed;
-		
-	}
 
 	z-index:500;
-	
+
 	#arrow {
 
 		#arrow-icon {
