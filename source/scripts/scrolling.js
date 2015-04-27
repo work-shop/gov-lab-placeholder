@@ -1,35 +1,44 @@
+/**
+ * file scrolling.js
+ *
+ * This module handles all script actions related to scrolling 
+ *
+ */
+
+var screenXS = 480;
+
 (function($) {
 	$(document).ready(function () {
+
+		var windowX = $(window).width();
 		var block = $('.block');
+		var downArrow = $('#down-arrow');
 
-		/* 
-			There are two scroll-triggered functions we need, especially.
-
-			1) a routine to swap out the target of the downarrow, and install an animate handler.
-
-			2) a routine to queue the animation on the callout when we've hit the #act-trigger block, or 
-			    alternatively the bottom of the page.
-		*/
 		var action_map = {
 			'#landing-block': [
 				gray_trigger,
+				act_trigger_inverse,
 				fade_in
 			],
 			'#about-block': [
 				brand_trigger,
+				act_trigger_inverse,
 				fade_out,
 				fade_in
 			],
 			'#process-block-1': [
 				dark_gray_trigger,
+				act_trigger_inverse,
 				fade_out,
 				fade_in
 			],
 			'#process-block-2': [
-				gray_trigger
+				gray_trigger,
+				act_trigger_inverse
 			],
 			'#process-block-3': [
 				dark_gray_trigger,
+				act_trigger_inverse,
 				fade_out,
 				fade_in
 			],
@@ -49,23 +58,60 @@
 
 		};
 
+		pollLocation( true );
+
+		var update_arrow = initialize_arrow( downArrow, block );
+
 
 		/** [1]. arrow target swap machine */
 		/** [2]. animation trigger */
-		$(window).on('scroll', function() {
-			update_anchor_target( select_next_block( block ), $('#arrow-icon') );
+		$(window).on('scroll href-changed', function() {
+
+			if ( screenXS < windowX ) { update_arrow(); }
 
 			do_block_action( $('.block, #bot').filter(':in-viewport'), action_map );
 
 		});
 
 		$(document).one('dom-is-sized', function() {
-
-			update_anchor_target( select_next_block( block ), $('#down-arrow') );
-
+			if ( screenXS > windowX ) {
+				downArrow.detach();
+			} else {
+				if ( !$.contains(document, downArrow) ) { downArrow.insertBefore( $('#landing-block') ); } 
+				update_arrow();
+			}
 		});
 	});
 })( jQuery );
+
+
+/** [1]. arrow target swap machine - callback */
+
+function initialize_arrow( arrow, block ) {
+	var target_block 		= select_next_block( block );
+
+	var scrollAnimation 	= function( event ) {
+
+		event.preventDefault();
+
+		// console.log( '\n\nclick callback triggered.' );
+		// console.log( target_block );
+
+		if ( target_block.length > 0 ) {
+			$('html, body').animate({
+				scrollTop: target_block.offset().top
+			}, 1500);
+		} 
+
+	};
+
+	arrow.on( 'click', scrollAnimation);
+
+	return function( ) {
+		target_block = select_next_block( block );
+	};
+}
+
 
 /**
  * This routine reduces the set of potential arrow-targets to
@@ -139,31 +185,6 @@ function fade_in( current ) {
 function fade_out( current ) {
 	//$('#' + current.last().next('section').attr('id') + '-cue' ).removeClass('callout-on').addClass('callout-off');
 	$('#' + current.last().attr('id') + '-cue' ).fadeOut();
-}
-
-
-
-/** [1]. arrow target swap machine - callback */
-
-function update_anchor_target( next, selector ) {
-	
-	selector.off();
-
-	selector.one('click', function( e ) {
-
-		console.log( '\n\nclick callback triggered.' );
-		console.log( next );
-
-		selector.off();
-		if ( next.length > 0 ) {
-			$('html, body').animate({
-				scrollTop: next.offset().top
-			}, 1500);
-		} 
-
-		//do_block_action( select_next_block( $('.block' ) ), action_map );
-	});
-
 }
 
 

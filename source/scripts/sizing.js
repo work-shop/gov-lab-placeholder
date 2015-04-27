@@ -20,12 +20,10 @@ function equal_width( target, selector ) {
 
 function arrow_size( target, selector ) {
 	var coefficient = .05;
-	var windowHeight = $(window).height();
-	var elementHeight = selector.height();
 
 	selector.css({
 		position: 'fixed',
-		bottom: -(elementHeight / 2) + (windowHeight * coefficient),
+		bottom: -(selector.height() / 2) + ($(window).height() * coefficient),
 		left: 50 + '%'
 	});
 }
